@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <!-- Last 10 transactions with swiggy -->
+<% else %>
+  <%= link_to 'Log In', new_user_session_path %>
+<% end %>
