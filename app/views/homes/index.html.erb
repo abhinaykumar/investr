@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
   <!-- Last 10 transactions with swiggy -->
+  <%= link_to 'log out', destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to 'Log In', new_user_session_path %>
 <% end %>

@@ -62,4 +62,26 @@ class User < ApplicationRecord
   def inactive_message
     !deleted_at ? super : :deleted_account
   end
+
+  def ten_financial_transaction
+    renew_token if token_expired?
+    Google::Gmail::Messages.call user_id: 'me', q: 'from:noreply@swiggy.in', access_token: google_auth.token
+  end
+
+  private
+    def google_auth
+      self.authorizations.where(provider: "google_oauth2").first
+    end
+
+    def renew_token
+      token = Google::RefreshToken.call google_auth.refresh_token
+      expires_at = Time.now.to_i + Time.at(token['expires_in']).utc.strftime("%H:%M:%S").to_i
+      google_auth.update! token: token['access_token'], expires_at: expires_at
+    end
+
+    def token_expired?
+      expires_at = Time.at(google_auth.expires_at.to_i).strftime('%d %m %Y %H:%M')
+      current_time = Time.now.strftime('%d %m %Y %H:%M')
+      expires_at < current_time
+    end
 end

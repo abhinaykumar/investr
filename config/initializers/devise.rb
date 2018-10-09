@@ -9,7 +9,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '0721da511adfe344206dd03adf2f1c129dca32ddedf9609d4bc20821b973f64bb07200975b2deeb7a4ac78896dbc4253331c9378a4d99e48205cb1bb7c56f06a'
-  config.omniauth :google_oauth2, '668430063482-ju2oee5np09ul795gupctbkq2hkgh6tc.apps.googleusercontent.com', 'jnqdUqXMWx1HrSZ0UJOGgzMW',
+  config.omniauth :google_oauth2, Rails.application.credentials.google[:client_id], Rails.application.credentials.google[:client_secret],
                   scope: 'email, profile, https://www.googleapis.com/auth/gmail.readonly', approval_prompt: 'force', skip_jwt: true
 
   # ==> Controller configuration
