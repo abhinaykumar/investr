@@ -1,24 +1,6 @@
-# README
+# Investr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Idea is very similar to what https://sqrrl.in/ is doing through mobiles apps. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is going to be a web bases application, which would keep track of emails from certain source and 
+notify user about the possible spare change they could invest in the mutual funds or stocks.
