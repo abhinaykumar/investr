@@ -1,6 +1,34 @@
 <% if user_signed_in? %>
   <!-- Last 10 transactions with swiggy -->
   <%= link_to 'log out', destroy_user_session_path, method: :delete %>
+  <br>
+  <br>
+  <div class="container">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date of transaction</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ten_financial_transaction.each_with_index do |t, i| %>
+        <tr>
+          <th scope="row"><%= i+1 %></th>
+          <th><%= t[:transaction_date] %></th>
+          <th><%= t[:expense] %></th>
+          <th><%= spare_change(t[:expense]) %></th>
+          <th><%= t[:source] %></th>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+
 <% else %>
   <%= link_to 'Log In', new_user_session_path %>
 <% end %>
