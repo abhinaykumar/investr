@@ -1,24 +1,18 @@
-# README
+# Investr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Idea is very similar to what https://sqrrl.in/ is doing through their mobile app. 
 
-Things you may want to cover:
+This is going to be a web based application, which would keep track of expenses via emails and 
+notify user about the spare change they could invest in the mutual funds or stocks.
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Planning:
+* Integrate Social Auth :white_check_mark:
+* Parse Gmail messages :white_check_mark:
+* Display Amount and Source :white_check_mark:
+* Display spare change to invest 
+* Allow user to add more sources
+  * Field to enter email ids
+  * Display content as preview
+  * Ask user to point out the field to track
+* Integrate trading platform Api
