@@ -7,10 +7,10 @@ notify user about the spare change they could invest in the mutual funds or stoc
 
 
 ## Planning:
-* Integrate Social Auth
-* Parse Gmail messages
-* Display Amount and Source
-* Display spare change to invest
+* Integrate Social Auth :white_check_mark:
+* Parse Gmail messages :white_check_mark:
+* Display Amount and Source :white_check_mark:
+* Display spare change to invest 
 * Allow user to add more sources
   * Field to enter email ids
   * Display content as preview
