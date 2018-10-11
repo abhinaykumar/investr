@@ -65,8 +65,9 @@ class User < ApplicationRecord
 
   def ten_financial_transaction
     renew_token if token_expired?
-    Google::Gmail::Messages.call user_id: 'me', q: 'from:noreply@swiggy.in', access_token: google_auth.token
+    Google::Gmail::Messages.call user_id: 'me', q: '{from:noreply@swiggy.in} OR {from:uber.india@uber.com AND subject:Uber Receipts}', access_token: google_auth.token
   end
+
 
   private
     def google_auth
