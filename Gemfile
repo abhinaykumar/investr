@@ -63,5 +63,5 @@ gem 'rest-client'
 
 gem 'nokogiri', '~> 1.8', '>= 1.8.4'
 
-gem 'bootstrap',     '4.1.1'
+gem 'bootstrap', '4.1.2'
 gem 'material-sass', '~> 4.1', '>= 4.1.1'
