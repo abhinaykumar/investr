@@ -9,9 +9,9 @@ module Google::Gmail
 
     def call
       service = Google::Gmail::Base.call @access_token
-      messages = service.list_user_messages('me', q: "from:noreply@swiggy.in", max_results: 10)
+      messages = service.list_user_messages('me', q: "#{@q}", max_results: 10)
       transactions = []
-      messages.messages.first(10).each do |message|
+      messages.messages.first(2).each do |message|
         content = service.get_user_message('me', message.id).payload
         transaction_date = content.headers.find { |x| x.name == "Date" }.value
         html_receipt = content.body.data

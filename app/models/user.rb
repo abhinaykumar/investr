@@ -65,7 +65,17 @@ class User < ApplicationRecord
 
   def ten_financial_transaction
     renew_token if token_expired?
-    Google::Gmail::Messages.call user_id: 'me', q: '{from:noreply@swiggy.in} OR {from:uber.india@uber.com AND subject:Uber Receipts}', access_token: google_auth.token
+    Google::Gmail::Messages.call user_id: 'me', q: "#{source_query_builder}", access_token: google_auth.token
+  end
+
+  def source_query_builder
+    query = ''
+    Source.all.each do |s|
+      qf = "{from:#{s.email}"
+      qs = s.subject? ? "#{qf} AND subject:#{s.subject}} OR " : "#{qf}} OR "
+      query += qs
+    end
+    query
   end
 
 
