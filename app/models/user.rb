@@ -70,10 +70,12 @@ class User < ApplicationRecord
 
   def source_query_builder
     query = ''
-    Source.all.each do |s|
-      qf = "{from:#{s.email}"
-      qs = s.subject? ? "#{qf} AND subject:#{s.subject}} OR " : "#{qf}} OR "
-      query += qs
+    sources = Source.all.as_json(only: [:email, :subject])
+    sources.each do |source|
+      query_f = "{from:#{source['email']}"
+      query_s = source['subject'].present? ? "#{query_f} AND subject:#{source['subject']}}" : "#{query_f}}"
+      query_s = query_s + " OR " unless source == sources.last?
+      query += query_s
     end
     query
   end
@@ -81,7 +83,7 @@ class User < ApplicationRecord
 
   private
     def google_auth
-      self.authorizations.where(provider: "google_oauth2").first
+      self.authorizations.where(provider: 'google_oauth2').first
     end
 
     def renew_token
