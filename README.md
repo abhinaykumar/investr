@@ -11,6 +11,7 @@ notify user about the spare change they could invest in the mutual funds or stoc
 * Parse Gmail messages :white_check_mark:
 * Display Amount and Source :white_check_mark:
 * Display spare change to invest :white_check_mark:
+* Integrate trading platform Api
 * Model to store source(from,subject,msg_id)
 * Read from the Model to display messages
 * Enable/Disable feature on the side bar for tracking sources
@@ -18,4 +19,4 @@ notify user about the spare change they could invest in the mutual funds or stoc
   * Field to enter email ids
   * Display content as preview
   * Ask user to point out the field to track
-* Integrate trading platform Api
+
