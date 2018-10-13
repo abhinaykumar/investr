@@ -6,7 +6,7 @@ This is going to be a web based application, which would keep track of expenses 
 notify user about the spare change they could invest in the mutual funds or stocks.
 
 
-## Planning:
+## Roadmap:
 * Integrate Social Auth :white_check_mark:
 * Parse Gmail messages :white_check_mark:
 * Display Amount and Source :white_check_mark:
