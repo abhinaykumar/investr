@@ -12,8 +12,6 @@ notify user about the spare change they could invest in the mutual funds or stoc
 * Display Amount and Source :white_check_mark:
 * Display spare change to invest :white_check_mark:
 * Integrate trading platform Api
-* Model to store source(from,subject,msg_id)
-* Read from the Model to display messages
 * Enable/Disable feature on the side bar for tracking sources
 * Allow user to add more sources
   * Field to enter email ids
