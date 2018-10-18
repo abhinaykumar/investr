@@ -13,17 +13,30 @@ module Google::Gmail
       transactions = []
       messages.messages.first(2).each do |message|
         content = service.get_user_message('me', message.id).payload
-        transaction_date = content.headers.find { |x| x.name == "Date" }.value
+        transaction_date, source = parse_content(content.headers)
         html_receipt = content.body.data
-        expense = parse_html(html_receipt)
+        source = map_source[:"#{source}"]
+        expense = public_send("parse_#{source}_html", html_receipt)
         transactions << { transaction_date: transaction_date, expense: expense, source: 'Swiggy' }
       end
       transactions
     end
 
-    def parse_html(html)
+    def parse_content(headers)
+      t_date = headers.find { |x| x.name == "Date" }.value
+      source = headers.find { |x| x.name == "From" }.value
+      [t_date, source]
+    end
+
+    def parse_swiggy_html(html)
       parsed_html = Nokogiri::HTML(html)
       parsed_html.at_css('div.order-content table tfoot tr.grand-total td').text
+    end
+
+    def map_source
+      {
+        "noreply@swiggy.in": "swiggy"
+      }
     end
   end
 end

@@ -3,13 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable, :omniauthable,
-         omniauth_providers: [:google_oauth2]
+         omniauth_providers: [:google_oauth2, :zerodha]
 
   has_many :authorizations
 
 
   SOCIALS = {
-    google_oauth2: 'Google'
+    google_oauth2: 'Google',
+    zerodha: 'Zerodha'
   }
 
   def self.from_omniauth(auth, current_user)
@@ -65,16 +66,16 @@ class User < ApplicationRecord
 
   def ten_financial_transaction
     renew_token if token_expired?
-    Google::Gmail::Messages.call user_id: 'me', q: "#{source_query_builder}", access_token: google_auth.token
+    Google::Gmail::Messages.call user_id: 'me', q: "#{build_query_from_sources}", access_token: google_auth.token
   end
 
-  def source_query_builder
+  def build_query_from_sources
     query = ''
     sources = Source.all.as_json(only: [:email, :subject])
     sources.each do |source|
       query_f = "{from:#{source['email']}"
       query_s = source['subject'].present? ? "#{query_f} AND subject:#{source['subject']}}" : "#{query_f}}"
-      query_s = query_s + " OR " unless source == sources.last?
+      query_s += " OR " unless source['email'] == sources.last['email']
       query += query_s
     end
     query
