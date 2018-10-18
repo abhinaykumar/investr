@@ -6,16 +6,15 @@ This is going to be a web based application, which would keep track of expenses 
 notify user about the spare change they could invest in the mutual funds or stocks.
 
 
-## Planning:
+## Roadmap:
 * Integrate Social Auth :white_check_mark:
 * Parse Gmail messages :white_check_mark:
 * Display Amount and Source :white_check_mark:
 * Display spare change to invest :white_check_mark:
-* Model to store source(from,subject,msg_id)
-* Read from the Model to display messages
+* Integrate trading platform Api
 * Enable/Disable feature on the side bar for tracking sources
 * Allow user to add more sources
   * Field to enter email ids
   * Display content as preview
   * Ask user to point out the field to track
-* Integrate trading platform Api
+
