@@ -61,7 +61,7 @@ gem 'google-api-client', '~> 0.24.2', require: 'google/apis/gmail_v1'
 
 gem 'rest-client'
 
-gem 'nokogiri', '~> 1.8', '>= 1.8.4'
+gem 'nokogiri', '~> 1.15'
 
 gem 'bootstrap', '4.1.2'
 gem 'material-sass', '~> 4.1', '>= 4.1.1'
